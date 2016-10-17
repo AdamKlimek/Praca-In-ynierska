@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class EnemyMove : MonoBehaviour
 {
     Grid grid;
-    float Speed = 0.5f;
+    float Speed = 2.0f;
     public AudioClip MoveSound;
     private Transform Player;
 	void Start()
@@ -41,6 +41,7 @@ public class EnemyMove : MonoBehaviour
         {
             if (Vector3.Distance(Player.position, gameObject.transform.position) < 1.5)
             {
+                gameObject.transform.LookAt(Player);
                 gameObject.SendMessage("Attack");
             }
             else

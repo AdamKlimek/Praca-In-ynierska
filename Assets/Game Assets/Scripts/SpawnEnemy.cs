@@ -25,7 +25,6 @@ public class SpawnEnemy : MonoBehaviour
 	void Update ()
     {
         TimeToSpawnEnemy += Time.deltaTime;
-
         if (ZombieCounter < ZombieLimit)
         {
             if (TimeToSpawnEnemy > 15.0f)

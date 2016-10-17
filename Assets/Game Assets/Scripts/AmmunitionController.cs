@@ -38,9 +38,12 @@ public class AmmunitionController : MonoBehaviour
     {
         CheckAmmo();
 
-        if(Input.GetKeyUp(KeyCode.R) == true)
+        if (Input.GetKeyUp(KeyCode.R) == true && IsReloaded == true)
         {
-            Reload();
+            if ((GetWeapon().name == "Shotgun" && ShotgunAmmoInMagazine != 8) || (GetWeapon().name == "PistolMakarov" && PistolMakarovAmmoInMagazine != 12) || (GetWeapon().name == "M41" && M41AmmoInMagazine != 90))
+            {
+                Reload();
+            }
         }
 	}
 

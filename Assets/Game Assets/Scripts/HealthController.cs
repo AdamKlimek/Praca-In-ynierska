@@ -7,14 +7,14 @@ public class HealthController : MonoBehaviour
     public float HealthPoints = 100.0f;
     public Image HealthBar;
     private bool IsDead = false;
-
+    private bool HeroIsDead = false;
     void Start ()
     {
     }
 	
 	void Update ()
     {
-        if(HealthPoints < 0)
+        if(HealthPoints <= 0)
         {
             HealthPoints = 0.0f;
             if(gameObject.CompareTag("Enemy") == true && IsDead == false)
@@ -22,8 +22,9 @@ public class HealthController : MonoBehaviour
                 gameObject.SendMessage("Death");
                 IsDead = true;
             }
-            else if(gameObject.CompareTag("Player") == true)
+            else if(gameObject.CompareTag("Player") == true && HeroIsDead == false)
             {
+                HeroIsDead = true;
                 gameObject.SendMessage("Death");
                 Time.timeScale = 0;
                 //GameObject.Find("Enemy").GetComponent<EnemyMove>().enabled = false;
